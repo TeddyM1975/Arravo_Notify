@@ -1,0 +1,17 @@
+<%- include("partials/header"); -%>
+
+<div class="mx-auto center">
+    <form action="/signIn" method="post">
+      <img class="mb-4" src="images\Arravo_logo_black.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Sign In</h1>
+
+
+      <input type="email" class="form-control mb-2" placeholder="Email" name="Email">
+      <input type="password" class="form-control mb-2" placeholder="Password" name="Password">
+
+      <button class="w-100 btn btn-lg btn-danger" type="submit">Log In</button>
+      <p class="mt-5 text-muted">Arravo</p>
+    </form>
+</div>
+
+<%- include("partials/footer"); -%>

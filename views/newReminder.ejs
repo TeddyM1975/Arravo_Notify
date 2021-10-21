@@ -1,0 +1,39 @@
+<%# //This is the page where the user creates a reminder event %>
+<%- include("partials/header"); -%>
+
+<div class="mx-auto center">
+    <form action="/newReminder" method="post">
+
+      <h1 class="h3 mb-3 fw-normal">New Reminder</h1>
+
+      <label for="title">Reminder Title</label>
+        <br>
+      <input type="text" name="reminder_title"  class="form-control mb-1" id="title" >
+
+
+      <br><label for="details">Reminder Details</label>
+      <br>
+      <textarea id="details" rows="5" name="reminder_details" cols="162" ></textarea>
+
+      <br><label for="start_date">Start</label>
+      <br>
+      <input type="date" class="mb-1" size="10" id="start_date" name="Appointment_time_starts">
+
+      <br><label for="end_date">End</label>
+      <br>
+      <input type="date" class="mb-1" size="10" id="ends_date" name="Appointment_time_ends">
+
+      <br><label for="intervals">Intervals:</label>
+      <input type="number" id="intervals" name="intervals" size="5" class="mb-1">
+
+
+
+
+      <button class="w-100 btn btn-lg btn-danger" type="submit">Create a new reminder</button>
+      <p class="mt-5 text-muted">Arravo</p>
+    </form>
+</div>
+
+
+
+<%- include("partials/footer"); -%>
