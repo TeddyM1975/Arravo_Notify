@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const truncate = require("truncate-html");
 
 const app = express();
 const reminder_database = [];
@@ -20,6 +21,37 @@ app.get("/newReminder", function(req, res){
   res.render("newReminder");
 });
 
+app.get("/activity", function(req, res){
+  const number_of_reminders_in_database = reminder_database.length;
+  const initial_id = 0;
+  const starting_number = 1;
+  var title = "title" + starting_number.toString();
+  var details = "details" + starting_number.toString();
+  if (number_of_reminders_in_database >= starting_number){
+
+    while (number_of_reminders_in_database > starting_number) {
+      res.render("activity", {
+        [title] : reminder_database[initial_id].reminder_title,
+        [details] : reminder_database[initial_id].reminder_details
+      });
+      initial_id += 1;
+      starting_number += 1;
+    }
+    res.render("activity", {
+      [title] : reminder_database[initial_id].reminder_title,
+      [details] : reminder_database[initial_id].reminder_details
+    });
+  }  else{
+    var title = "title0";
+    var details = "details0";
+    res.render("activity", {
+      [title] : "No Reminders",
+      [details] : "..."
+    });
+  }
+
+});
+
 app.post("/newReminder", function(req, res){
   const reminder = {
     // Data gotten from the newReminder page
@@ -28,8 +60,10 @@ app.post("/newReminder", function(req, res){
     start_date : req.body.Appointment_time_starts,
     end_date : req.body.Appointment_time_ends
   }
+
   reminder_database.push(reminder);
   console.log(reminder);
+  res.redirect("/activity");
 })
 
 app.get("/signIn", function(req, res){
@@ -39,7 +73,7 @@ app.get("/signIn", function(req, res){
 app.post("/signIn", function(req, res){
   const email = req.body.email;
   const password = req.body.Password;
-  /*if (email and password in database){
+  /*if (email and password in users database){
     log user in
     res.redirect("/activity")
   }*/
