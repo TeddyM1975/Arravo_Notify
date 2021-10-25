@@ -21,35 +21,11 @@ app.get("/newReminder", function(req, res){
   res.render("newReminder");
 });
 
+
 app.get("/activity", function(req, res){
-  const number_of_reminders_in_database = reminder_database.length;
-  const initial_id = 0;
-  const starting_number = 1;
-  var title = "title" + starting_number.toString();
-  var details = "details" + starting_number.toString();
-  if (number_of_reminders_in_database >= starting_number){
-
-    while (number_of_reminders_in_database > starting_number) {
-      res.render("activity", {
-        [title] : reminder_database[initial_id].reminder_title,
-        [details] : reminder_database[initial_id].reminder_details
-      });
-      initial_id += 1;
-      starting_number += 1;
-    }
-    res.render("activity", {
-      [title] : reminder_database[initial_id].reminder_title,
-      [details] : reminder_database[initial_id].reminder_details
-    });
-  }  else{
-    var title = "title0";
-    var details = "details0";
-    res.render("activity", {
-      [title] : "No Reminders",
-      [details] : "..."
-    });
-  }
-
+  res.render("activity", {
+    reminder_database : reminder_database
+  });
 });
 
 app.post("/newReminder", function(req, res){
