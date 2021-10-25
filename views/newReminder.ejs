@@ -1,6 +1,18 @@
 <%# //This is the page where the user creates a reminder event %>
 <%- include("partials/header"); -%>
 
+<header class="mb-auto">
+  <div>
+    <img src="C:\Users\User\Documents\Web development\Arravo_Notify\images\Arravo logo black.png" alt="Logo" class="d-inline-block align-text-top float-start">
+    <h3 class="float-md-start mb-0">Arravo</h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <a class="nav-link active" aria-current="page" href="/">Home</a>
+      <a class="nav-link" href="activity">Activity</a>
+      <a class="nav-link" href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
 <div class="mx-auto center">
     <form action="/newReminder" method="post">
 
@@ -30,7 +42,7 @@
 
 
 
-      <button class="w-100 btn btn-lg btn-danger" type="submit">Create a new reminder</button>
+      <br><button class="w-50 btn btn-lg btn-danger" type="submit">Create a new reminder</button>
       <p class="mt-5 text-muted">Arravo</p>
     </form>
 </div>
